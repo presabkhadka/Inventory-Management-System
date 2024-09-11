@@ -1,12 +1,22 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup"; 
+import * as yup from "yup";
 import { H2, P, Label, SmallText } from "@/components/styledcomponent";
 import { Link } from "react-router-dom";
 
 const schema = yup.object().shape({
-  email: yup.string().email("Invalid email format").required("Email is required"),
-  password: yup.string().min(8, "Password must be at least 8 characters").required("Password is required"),
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d|.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-])(?=^.{8,}$).*$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, and one number or special character"
+    ),
 });
 
 function Login() {
@@ -15,7 +25,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema), 
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
@@ -44,7 +54,10 @@ function Login() {
               </P>
             </div>
             <div className="flex flex-col gap-6">
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col gap-5"
+              >
                 <div className="flex flex-col gap-1">
                   <Label htmlFor="email" className="text-coolgray-700">
                     Email
@@ -53,10 +66,12 @@ function Login() {
                     type="email"
                     placeholder="Enter your email"
                     className="px-4 py-3 gap-2 rounded-lg border font-normal text-base leading-6"
-                    {...register("email")} 
+                    {...register("email")}
                   />
                   {errors.email && (
-                    <SmallText className="text-red-500">{errors.email.message}</SmallText>
+                    <SmallText className="text-red-500">
+                      {errors.email.message}
+                    </SmallText>
                   )}
                 </div>
                 <div className="flex flex-col gap-1">
@@ -69,9 +84,11 @@ function Login() {
                     className="px-4 py-3 gap-2 rounded-lg border font-normal text-base leading-6"
                     {...register("password")}
                   />
-                  
+
                   {errors.password && (
-                    <SmallText className="text-red-500">{errors.password.message}</SmallText>
+                    <SmallText className="text-red-500">
+                      {errors.password.message}
+                    </SmallText>
                   )}
                 </div>
                 <button
@@ -92,7 +109,10 @@ function Login() {
                   </label>
                 </div>
                 <div>
-                  <a href="#" className="text-blue-600 font-medium text-sm leading-5">
+                  <a
+                    href="#"
+                    className="text-blue-600 font-medium text-sm leading-5"
+                  >
                     Forgot password
                   </a>
                 </div>

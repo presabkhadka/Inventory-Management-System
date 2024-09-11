@@ -140,7 +140,7 @@ function Orders() {
                                 type="text"
                                 name="productname"
                                 id="prodName"
-                                placeholder="Enter buying price"
+                                placeholder="Enter order value"
                                 className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
                               />
 
@@ -167,7 +167,7 @@ function Orders() {
                                 type="text"
                                 name="productname"
                                 id="prodName"
-                                placeholder="Enter expiry date"
+                                placeholder="Enter buying price"
                                 className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
                               />
 
@@ -196,8 +196,8 @@ function Orders() {
                                 >
                                   Discard
                                 </button>
-                                <button className="border px-3 py-2 rounded bg-button text-white">
-                                  Add Product
+                                <button className="border px-3 py-2 rounded bg-blue-600 text-white">
+                                  Add Order
                                 </button>
                               </div>
                             </form>
@@ -207,11 +207,11 @@ function Orders() {
                     </Dialog>
                   </button>
 
-                  <button className="px-4 py-2 gap-2 rounded-sm border flex items-center">
+                  <button className="px-4 py-2 gap-2 rounded-sm border flex items-center hover:bg-blue-50">
                     <IoFilterSharp />
                     Filters
                   </button>
-                  <button className="px-4 py-2 gap-2 rounded-sm border flex">
+                  <button className="px-4 py-2 gap-2 rounded-sm border flex hover:bg-blue-50">
                     Order History
                   </button>
                 </div>

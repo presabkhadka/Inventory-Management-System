@@ -6,10 +6,26 @@ import { LuBox } from "react-icons/lu";
 import { FaRegListAlt } from "react-icons/fa";
 import { CiSettings } from "react-icons/ci";
 import { PiSignOutLight } from "react-icons/pi";
-import { Link } from "react-router-dom";
-import { Lists, UnorderedLists } from "../styledcomponent";
+import { Link, NavLink } from "react-router-dom";
+import { UnorderedLists } from "../styledcomponent";
 
 function SideBar() {
+
+  const options1 = [
+    {name: "Dashboard", icon: <CiHome />, url:"/"},
+    {name: "Inventory", icon: <CiShoppingCart />, url:"/inventory"},
+    {name: "Reports", icon: <FaRegChartBar />, url:"/reports"},
+    {name: "Suppliers", icon: <FaRegUserCircle />, url:"/suppliers"},
+    {name: "Orders", icon: <LuBox />, url:"/orders"},
+    {name: "Manage Store", icon: <FaRegListAlt />, url:"/manage"},
+  ]
+  
+  const options2 = [
+    {name: "Settings", icon: <CiSettings />, url:"/settings"}, //esko page banna baki cha
+    {name: "Sign Out", icon: <PiSignOutLight />, url:"/login"},
+  ]
+
+
   return (
     <div className="flex flex-col justify-between p-4 h-screen">
       <div className="flex flex-col content-between gap-8">
@@ -24,59 +40,41 @@ function SideBar() {
         </div>
         <div className="options pt-2 pb-4 pl-2 pr-4">
           <UnorderedLists className="flex flex-col gap-3 text-coolgray-600">
-            <Link to="/">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <CiHome />
-                Dashboard
-              </Lists>
-            </Link>
-            <Link to="/inventory">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <CiShoppingCart />
-                Inventory
-              </Lists>
-            </Link>
-            <Link to="/reports">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <FaRegChartBar />
-                Reports
-              </Lists>
-            </Link>
-            <Link to="/suppliers">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <FaRegUserCircle />
-                Suppliers
-              </Lists>
-            </Link>
-            <Link to="/orders">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <LuBox />
-                Orders
-              </Lists>
-            </Link>
-            <Link to="/manage">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <FaRegListAlt />
-                Manage Store
-              </Lists>
-            </Link>
+            {options1.map((x)=>(
+              <NavLink
+              to={x.url}
+              key={x.name}
+              className={({ isActive }) =>
+                `flex p-2 items-center gap-4  cursor-pointer hover:outline-none hover:ring-1 hover:bg-blue-100 hover:ring-violet-300 ${
+                  isActive ? "text-blue-500" : "text-coolgray-600"
+                }`
+              }
+            >
+              {x.icon}
+              {x.name}
+            </NavLink>
+            ))}
           </UnorderedLists>
         </div>
       </div>
       <div className="bottom">
         <div className="authorization flex gap-3 pl-2 pr-4 font-medium text-base text-greyText">
-          <ul className="w-full flex flex-col gap-3">
-            <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-              <CiSettings />
-              Settings
-            </Lists>
-            <Link to="/login">
-              <Lists className="flex p-2 items-center gap-4 hover:outline-none hover:ring-2 hover:ring-violet-300 cursor-pointer">
-                <PiSignOutLight />
-                Sign Out
-              </Lists>
-            </Link>
-          </ul>
+          <UnorderedLists className="w-full flex flex-col gap-3">
+            {options2.map((x)=>(
+              <NavLink
+              to={x.url}
+              key={x.name}
+              className={({ isActive }) =>
+                `flex p-2 items-center gap-4 hover:outline-none hover:ring-1 hover:bg-blue-100 hover:ring-violet-300 cursor-pointer ${
+                  isActive ? "text-blue-500" : "text-coolgray-600"
+                }`
+              }
+            >
+              {x.icon}
+              {x.name}
+            </NavLink>
+            ))}
+          </UnorderedLists>
         </div>
       </div>
     </div>

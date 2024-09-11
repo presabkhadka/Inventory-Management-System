@@ -1,16 +1,23 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
+import * as yup from "yup";
 import { H2, Label, P, SmallText } from "@/components/styledcomponent";
 import { Link } from "react-router-dom";
 
 function Signup() {
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email format").required("Email is required"),
-    password: Yup.string()
+  const validationSchema = yup.object().shape({
+    name: yup.string().required("Name is required"),
+    email: yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    password: yup
+      .string()
       .min(8, "Password must be at least 8 characters")
-      .required("Password is required"),
+      .required("Password is required")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d|.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-])(?=^.{8,}$).*$/,
+        "Password must contain at least one uppercase letter, one lowercase letter, and one number or special character"
+      ),
   });
 
   const {
@@ -34,45 +41,75 @@ function Signup() {
         <div className="grid md:grid-cols-9 grid-cols-12 justify-center w-full">
           <div className="col-start-3 md:col-span-5 col-span-8 flex flex-col gap-4 w-full">
             <div className="flex justify-center">
-              <img src="../src/assets/pp.png" alt="logo" className="aspect-square" />
+              <img
+                src="../src/assets/pp.png"
+                alt="logo"
+                className="aspect-square"
+              />
             </div>
             <div className="flex flex-col gap-3">
               <H2 className="text-center">Create an account</H2>
-              <P className="text-center text-coolgray-700">Start your 30-day free trial.</P>
+              <P className="text-center text-coolgray-700">
+                Start your 30-day free trial.
+              </P>
             </div>
             <div className="flex flex-col gap-6">
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col gap-5"
+              >
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="name" className="text-coolgray-700">Name</Label>
+                  <Label htmlFor="name" className="text-coolgray-700">
+                    Name
+                  </Label>
                   <input
                     type="text"
                     placeholder="Enter your name"
                     {...register("name")}
                     className="px-4 py-3 gap-2 rounded-lg border font-normal text-base leading-6"
                   />
-                  {errors.name && <SmallText className="text-red-500">{errors.name.message}</SmallText>}
+                  {errors.name && (
+                    <SmallText className="text-red-500">
+                      {errors.name.message}
+                    </SmallText>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="email" className="text-coolgray-700">Email</Label>
+                  <Label htmlFor="email" className="text-coolgray-700">
+                    Email
+                  </Label>
                   <input
                     type="email"
                     placeholder="Enter your email"
                     {...register("email")}
                     className="px-4 py-3 gap-2 rounded-lg border font-normal text-base leading-6"
                   />
-                  {errors.email && <SmallText className="text-red-500">{errors.email.message}</SmallText>}
+                  {errors.email && (
+                    <SmallText className="text-red-500">
+                      {errors.email.message}
+                    </SmallText>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="password" className="text-coolgray-700">Password</Label>
+                  <Label htmlFor="password" className="text-coolgray-700">
+                    Password
+                  </Label>
                   <input
                     type="password"
                     placeholder="Create a password"
                     {...register("password")}
                     className="px-4 py-3 gap-2 rounded-lg border font-normal text-base leading-6"
                   />
-                  {errors.password && <SmallText className="text-red-500">{errors.password.message}</SmallText>}
+                  {errors.password && (
+                    <SmallText className="text-red-500">
+                      {errors.password.message}
+                    </SmallText>
+                  )}
                 </div>
-                <button type="submit" className="border px-4 py-2 bg-blue-600 text-white rounded gap-2">
+                <button
+                  type="submit"
+                  className="border px-4 py-2 bg-blue-600 text-white rounded gap-2"
+                >
                   Get started
                 </button>
               </form>

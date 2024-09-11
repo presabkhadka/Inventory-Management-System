@@ -226,7 +226,7 @@ function ReportsTable1() {
         <button
           onClick={() => setPageIndex((prev) => Math.max(prev - 1, 0))}
           disabled={!table.getCanPreviousPage()}
-          className="px-4 py-2 gap-2 rounded-sm border hover:cursor-pointer"
+          className="px-4 py-2 gap-2 rounded-sm border hover:cursor-pointer hover:bg-blue-50"
         >
           Previous
         </button>
@@ -238,7 +238,7 @@ function ReportsTable1() {
             setPageIndex((prev) => Math.min(prev + 1, table.getPageCount() - 1))
           }
           disabled={!table.getCanNextPage()}
-          className="px-4 py-2 gap-2 rounded-sm border hover:cursor-pointer"
+          className="px-4 py-2 gap-2 rounded-sm border hover:cursor-pointer hover:bg-blue-50"
         >
           Next
         </button>

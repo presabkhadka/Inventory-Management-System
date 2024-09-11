@@ -1,13 +1,4 @@
-import { IoFilterSharp } from "react-icons/io5";
 import InventoryTable from "./components/tables/inventoryTable";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./components/ui/dialog";
-import { useRef } from "react";
 import SideBar from "./components/sidebars/sidebar";
 import Navbar from "./components/sidebars/navbar";
 import { H4, P, PBold } from "./components/styledcomponent";
@@ -57,7 +48,6 @@ const colors = [
 ];
 
 function Inventory() {
-  const productImagePicker = useRef();
 
   return (
     <div className="grid grid-cols-12 h-screen gap-4">
@@ -96,7 +86,7 @@ function Inventory() {
               </div>
             </div>
             <div className="col-span-12 bg-white rounded-lg p-4">
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between">
                 <H4 className="text-coolgray-800">Products</H4>
                 <div className=" flex gap-3">
                   <button className="bg-blue-600 text-white px-4 py-2 flex gap-2 rounded-sm">
@@ -207,7 +197,7 @@ function Inventory() {
                                 >
                                   Discard
                                 </button>
-                                <button className="border px-3 py-2 rounded bg-button text-white">
+                                <button className="border px-3 py-2 rounded bg-blue-600 text-white">
                                   Add Product
                                 </button>
                               </div>
@@ -226,7 +216,7 @@ function Inventory() {
                     Download all
                   </button>
                 </div>
-              </div>
+              </div> */}
               <div>
                 <InventoryTable />
               </div>

@@ -12,6 +12,7 @@ import SideBar from "./components/sidebars/sidebar";
 import Navbar from "./components/sidebars/navbar";
 import PaymentOrderlist from "./components/orderlist/paymentOrderlist";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/tab/tab";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 function Payment() {
   return (
@@ -24,7 +25,7 @@ function Payment() {
           <Navbar />
         </div>
         <div className=" flex gap-4 px-6 py-4">
-          <button className="flex items-center bg-blue-600 px-4 py-2 rounded-lg gap-4 text-white text-base font-medium shadow-lg ">
+          <button className="flex items-center bg-blue-500 px-4 py-2 rounded-lg gap-4 text-white text-base font-medium shadow-lg ">
             <CiHome size={20} />
             Cash in Hand
           </button>
@@ -35,19 +36,27 @@ function Payment() {
         </div>
         <div className="grid grid-cols-10 px-6 gap-x-4">
           <div className="md:col-span-6 rounded-lg bg-white p-6 gap-y-4 shadow-xl">
-            <div className="lg:flex gap-4">
-              <button className="flex items-center px-4 py-2 gap-4 rounded-md shadow-lg border border-solid border-blue-500 text-blue-500 text-base font-medium">
-                <AiFillHome size={20} />
-                Inside Valley
-              </button>
-              <button className="flex items-center px-4 py-2 gap-4 rounded-lg shadow-lg text-base font-medium text-greyText">
-                <CiShoppingCart size={20} />
-                Outside Valley
-              </button>
-              <button className="flex items-center px-4 py-2 gap-4 rounded-lg shadow-lg text-base font-medium text-greyText">
-                <CiShoppingCart size={20} />
-                Shop
-              </button>
+            <div>
+              <ToggleGroup type="single" className="lg:flex gap-4 flex-grow">
+                <ToggleGroupItem value="a">
+                  <button className="flex gap-2">
+                    <AiFillHome size={20} />
+                    Inside Valley
+                  </button>
+                </ToggleGroupItem>
+                <ToggleGroupItem value="b">
+                <button className="flex gap-2">
+                    <CiShoppingCart size={20} />
+                    Outside Valley
+                  </button>
+                </ToggleGroupItem>
+                <ToggleGroupItem value="c">
+                <button className="flex gap-2">
+                    <CiShoppingCart size={20} />
+                    Shop
+                  </button>
+                </ToggleGroupItem>
+              </ToggleGroup>
             </div>
             <div>
               <PaymentOrderlist />
