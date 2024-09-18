@@ -11,26 +11,34 @@ import Orders from "./orders";
 import ManageStore from "./manageStore";
 import Suppliers from "./suppliers";
 import { ThemeProvider } from "./components/ui/theme-provider";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <ThemeProvider>
-      <RouterProvider
-        router={createBrowserRouter([
-          { path: "/", element: <Dashboard /> },
-          { path: "/product", element: <Product /> },
-          { path: "/payment", element: <Payment /> },
-          { path: "/login", element: <Login /> },
-          { path: "/signup", element: <Signup /> },
-          { path: "/inventory", element: <Inventory /> },
-          { path: "/added", element: <AddedProduct /> },
-          { path: "/reports", element: <Reports /> },
-          { path: "/orders", element: <Orders /> },
-          { path: "/manage", element: <ManageStore /> },
-          { path: "/suppliers", element: <Suppliers /> },
-        ])}
-      ></RouterProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <RouterProvider
+          router={createBrowserRouter([
+            { path: "/", element: <Dashboard /> },
+            { path: "/product", element: <Product /> },
+            { path: "/payment", element: <Payment /> },
+            { path: "/login", element: <Login /> },
+            { path: "/signup", element: <Signup /> },
+            { path: "/inventory", element: <Inventory /> },
+            { path: "/added", element: <AddedProduct /> },
+            { path: "/reports", element: <Reports /> },
+            { path: "/orders", element: <Orders /> },
+            { path: "/manage", element: <ManageStore /> },
+            { path: "/suppliers", element: <Suppliers /> },
+          ])}
+        ></RouterProvider>
       </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 export default App;

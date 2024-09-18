@@ -261,7 +261,7 @@ function SupplierTable() {
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex justify-between">
-        <H4 className="">Suppliers</H4>
+        <H4>Suppliers</H4>
         <div className=" flex gap-3">
           <button className="bg-blue-600 text-white px-4 py-2 flex gap-2 rounded-sm">
             <Dialog>
@@ -320,7 +320,7 @@ function SupplierTable() {
 
                       <label htmlFor="prodName">Buying Price</label>
                       <input
-                        type="text"
+                        type="number"
                         name="productname"
                         id="prodName"
                         placeholder="Enter buying price"

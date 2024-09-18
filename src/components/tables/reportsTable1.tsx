@@ -5,7 +5,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  getPaginationRowModel
+  getPaginationRowModel,
 } from "@tanstack/react-table";
 
 type Content = {
@@ -149,9 +149,7 @@ const columns = [
   }),
   columnHelper.accessor("increaseBy", {
     header: () => <span>Increase By</span>,
-    cell: (info) => (
-      <span className="text-green-500">{info.getValue()}</span>
-    ),
+    cell: (info) => <span className="text-green-400">{info.getValue()}%</span>,
   }),
 ];
 
@@ -164,16 +162,16 @@ function ReportsTable1() {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    state:{
-      pagination:{
+    state: {
+      pagination: {
         pageIndex,
         pageSize,
       },
     },
     onPaginationChange: (pagination) => {
-       setPageIndex(pagination.setPageIndex),
-       setPageSize(pagination.setPageSize)
-    }
+      setPageIndex(pagination.setPageIndex),
+        setPageSize(pagination.setPageSize);
+    },
   });
   return (
     <div className="">
@@ -196,7 +194,10 @@ function ReportsTable1() {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} className="border-b-2 last:border-0 even:bg-blue-100">
+            <tr
+              key={row.id}
+              className="border-b-2 last:border-0 even:bg-blue-100"
+            >
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id} className="px-4 py-3">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

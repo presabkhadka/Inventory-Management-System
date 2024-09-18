@@ -45,7 +45,7 @@ const columns = [
   }),
   columnHelper.accessor("increaseBy", {
     header: () => <span>Increase By</span>,
-    cell: (info) => info.getValue(),
+    cell: (info) =><span className="text-green-400">{info.getValue()}%</span>,
   }),
 ];
 

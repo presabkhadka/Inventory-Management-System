@@ -48,7 +48,6 @@ const colors = [
 ];
 
 function Inventory() {
-
   return (
     <div className="grid grid-cols-12 h-screen gap-4">
       <div className="col-span-2">
@@ -85,141 +84,8 @@ function Inventory() {
                 ))}
               </div>
             </div>
-            <div className="col-span-12 bg-white rounded-lg p-4">
-              {/* <div className="flex justify-between">
-                <H4 className="text-coolgray-800">Products</H4>
-                <div className=" flex gap-3">
-                  <button className="bg-blue-600 text-white px-4 py-2 flex gap-2 rounded-sm">
-                    <Dialog>
-                      <DialogTrigger>Add Product</DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>New Product</DialogTitle>
-                          <div className="flex justify-center p-4">
-                            <input
-                              ref={productImagePicker}
-                              className="hidden"
-                              type="file"
-                              name="productImage"
-                              id="prodpng"
-                              accept="image/png, image/gif, image/jpeg"
-                            />
-                            <button
-                              onClick={() =>
-                                productImagePicker?.current?.click()
-                              }
-                              className="border-dashed border-2 p-6 text-blue-400"
-                            >
-                              Browse Image
-                            </button>
-                          </div>
-                          <div>
-                            <form
-                              action="#"
-                              className="grid grid-cols-3 gap-4 items-center"
-                              id="prodForm"
-                            >
-                              <label htmlFor="prodName">Product Name</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter product name"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Product ID</label>
-                              <input
-                                type="text"
-                                name="productid"
-                                id="prodID"
-                                placeholder="Enter product ID"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Category</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter product category"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Buying Price</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter buying price"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Quantity</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter product quantity"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Unit</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter product unit"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Expiry Date</label>
-                              <input
-                                type="date"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter expiry date"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-
-                              <label htmlFor="prodName">Threshold Value</label>
-                              <input
-                                type="text"
-                                name="productname"
-                                id="prodName"
-                                placeholder="Enter threshold value"
-                                className="border px-3 py-2 flex grow gap-2 rounded-lg col-span-2"
-                              />
-                              <div className="flex col-span-3 justify-end gap-3 ">
-                                <button
-                                  className="border px-3 py-2 rounded"
-                                  type="reset"
-                                >
-                                  Discard
-                                </button>
-                                <button className="border px-3 py-2 rounded bg-blue-600 text-white">
-                                  Add Product
-                                </button>
-                              </div>
-                            </form>
-                          </div>
-                        </DialogHeader>
-                      </DialogContent>
-                    </Dialog>
-                  </button>
-
-                  <button className="px-4 py-2 gap-2 rounded-sm border flex items-center">
-                    <IoFilterSharp />
-                    Filters
-                  </button>
-                  <button className="px-4 py-2 gap-2 rounded-sm border flex">
-                    Download all
-                  </button>
-                </div>
-              </div> */}
-              <div>
-                <InventoryTable />
-              </div>
+            <div className="col-span-12 bg-white rounded-lg">
+              <InventoryTable />
             </div>
           </div>
         </div>
